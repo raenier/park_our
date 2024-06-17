@@ -7,3 +7,21 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+#
+
+[
+  %w[THS123 small],
+  %w[LKS325 medium],
+  %w[NAS532 large],
+  %w[WCS987 small]
+].each do |plate, size|
+  Vehicle.create(plate:, size:)
+end
+
+('A'..'Q').each do |letter|
+  ParkingSpace.create(
+    name: letter,
+    size: ParkingSpace.sizes.values.sample,
+    entrance_distances: 3.times.reduce([]) { |acc| acc << rand(1..20) }
+  )
+end
