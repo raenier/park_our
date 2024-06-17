@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_16_134553) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_17_060955) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -27,6 +27,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_16_134553) do
     t.integer "status", default: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "parking_space_id"
+    t.index ["parking_space_id"], name: "index_tickets_on_parking_space_id"
     t.index ["vehicle_id"], name: "index_tickets_on_vehicle_id"
   end
 
@@ -37,5 +39,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_16_134553) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "tickets", "parking_spaces"
   add_foreign_key "tickets", "vehicles"
 end
