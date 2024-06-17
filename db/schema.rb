@@ -24,7 +24,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_16_134553) do
 
   create_table "tickets", force: :cascade do |t|
     t.bigint "vehicle_id", null: false
-    t.integer "status"
+    t.integer "status", default: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["vehicle_id"], name: "index_tickets_on_vehicle_id"
