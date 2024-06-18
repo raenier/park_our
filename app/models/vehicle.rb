@@ -5,4 +5,8 @@ class Vehicle < ApplicationRecord
   validates :size, presence: true
 
   enum size: %i[small medium large]
+
+  def previous_ticket
+    tickets.second_to_last
+  end
 end

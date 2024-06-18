@@ -28,10 +28,22 @@ class Ticket < ApplicationRecord
   end
 
   def calculate_flat_rate(duration)
+    return 0 if previous_ticket_less_than_an_hour?
+
     duration >= 24 ? FLAT_RATE_24HR * (duration / 24) : FLAT_RATE
   end
 
   def calculate_excess_hour(duration)
+    return duration if previous_ticket_less_than_an_hour?
+
     duration >= 24 ? duration % 24 : [duration - 3, 0].max
+  end
+
+  def previous_ticket_less_than_an_hour?
+    previous_ticket = vehicle.previous_ticket
+    return false unless previous_ticket
+
+    duration_between_previous_ticket = (previous_ticket.updated_at - created_at) / 3600
+    duration_between_previous_ticket <= 1
   end
 end
