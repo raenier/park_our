@@ -1,5 +1,6 @@
 class Ticket < ApplicationRecord
   FLAT_RATE = 40
+  FLAT_RATE_24HR = 5_000
 
   belongs_to :vehicle
   belongs_to :parking_space
@@ -9,11 +10,10 @@ class Ticket < ApplicationRecord
   def calculate_fee
     continuous_rate = calculate_continuous_rate
     duration = calculate_hour_duration
+    flatrate = calculate_flat_rate(duration)
+    excess_hour = calculate_excess_hour(duration)
 
-    return FLAT_RATE if duration <= 3
-
-    excess = duration - 3
-    FLAT_RATE + (excess * continuous_rate)
+    flatrate + (excess_hour * continuous_rate)
   end
 
   private
@@ -25,5 +25,13 @@ class Ticket < ApplicationRecord
   def calculate_hour_duration
     duration = (Time.zone.now - created_at) / 3600
     duration.ceil
+  end
+
+  def calculate_flat_rate(duration)
+    duration >= 24 ? FLAT_RATE_24HR * (duration / 24) : FLAT_RATE
+  end
+
+  def calculate_excess_hour(duration)
+    duration >= 24 ? duration % 24 : duration - 3
   end
 end
