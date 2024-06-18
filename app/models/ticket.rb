@@ -32,6 +32,6 @@ class Ticket < ApplicationRecord
   end
 
   def calculate_excess_hour(duration)
-    duration >= 24 ? duration % 24 : duration - 3
+    duration >= 24 ? duration % 24 : [duration - 3, 0].max
   end
 end
