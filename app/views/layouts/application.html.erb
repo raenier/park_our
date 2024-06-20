@@ -11,6 +11,20 @@
   </head>
 
   <body>
+    <% flash.each do |key, value| %>
+      <% if value.is_a?(Array) %>
+        <% value.each do |msg| %>
+          <div class="flash flash-<%= key %>">
+            <%= msg %>
+          </div>
+        <% end %>
+      <% else %>
+        <div class="flash flash-<%= key %>">
+          <%= value %>
+        </div>
+      <% end %>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>

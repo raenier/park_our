@@ -9,10 +9,10 @@ class TicketsController < ApplicationController
     parking_space = ParkingSpace.get_nearest_available(params[:entrance_number].to_i, params[:size])
     ticket = Ticket.new(vehicle:, parking_space:)
 
-    if ticket.save
-      redirect_to root_path
-    else
-      render :index, status: :unprocessable_entity
+    unless vehicle.errors.empty? && parking_space && ticket.save
+      flash[:alert] = parking_space ? vehicle.errors.full_messages || [] : 'No Available Parking Space'
     end
+
+    redirect_to root_path
   end
 end

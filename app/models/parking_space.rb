@@ -13,5 +13,7 @@ class ParkingSpace < ApplicationRecord
 
       return available_spaces.min_by { |space| space.entrance_distances[entrance_number - 1] }
     end
+
+    false
   end
 end
