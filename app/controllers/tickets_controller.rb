@@ -2,6 +2,7 @@ class TicketsController < ApplicationController
   def index
     @entrance_count = 3
     @vehicle_sizes = Vehicle.sizes.keys
+    @parking_spaces = ParkingSpace.all
   end
 
   def create

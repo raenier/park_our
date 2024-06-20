@@ -1,0 +1,18 @@
+<div class="<%= class_names('card', active: parking_space.parked_vehicle) %>">
+  <div class="title">
+    <%= parking_space.name %>
+    <div>Size: <%= parking_space.size %></div>
+    <div>
+      Entrance/Exit distance: <%= parking_space.entrance_distances.join(", ") %>
+    </div>
+  </div>
+
+  <br>
+  <% if parking_space.parked_vehicle %>
+    <div class="body">
+      <div>
+        Parked: <%= parking_space.parked_vehicle&.plate&.upcase %>
+      </div>
+    </div>
+  <% end %>
+</div>
