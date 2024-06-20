@@ -17,8 +17,11 @@ class ParkingSpace < ApplicationRecord
     false
   end
 
+  def active_ticket
+    tickets.find_by(status: 'parked')
+  end
+
   def parked_vehicle
-    ticket = tickets.find_by(status: 'parked')
-    ticket&.vehicle
+    active_ticket&.vehicle
   end
 end

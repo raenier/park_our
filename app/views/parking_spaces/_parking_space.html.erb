@@ -13,6 +13,10 @@
       <div>
         Parked: <%= parking_space.parked_vehicle&.plate&.upcase %>
       </div>
+      <br>
+      <%= form_with url: ticket_path(parking_space.active_ticket), method: :put do |f| %>
+        <%= f.submit "UNPARK", class: 'btn unpark' %>
+      <% end %>
     </div>
   <% end %>
 </div>

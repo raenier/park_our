@@ -33,7 +33,7 @@
 
 .active {
   border: green 3px solid;
-  background-color: turquoise;
+  background-color: #F6EEC9;
 }
 
 .btn {
@@ -43,6 +43,11 @@
   border: 0;
   color: white;
   background-color: green;
+}
+
+.unpark {
+  font-size: 1rem;
+  background-color: #EE4E4E;
 }
 
 input, select, label {

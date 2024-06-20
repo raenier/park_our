@@ -16,4 +16,13 @@ class TicketsController < ApplicationController
 
     redirect_to root_path
   end
+
+  def update
+    ticket = Ticket.find params[:id]
+    total_fee = ticket.calculate_fee
+    ticket.update(status: 'unparked', total_fee:)
+
+    flash[:notice] = "Vehicle: #{ticket.vehicle.plate}, TOTAL FEE: #{total_fee}"
+    redirect_to root_path
+  end
 end
