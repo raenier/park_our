@@ -9,7 +9,7 @@ class ParkingSpace < ApplicationRecord
   def self.get_nearest_available(entrance_number, size)
     (sizes[size]..sizes.values.last).each do |size_val|
       available_spaces = available_spaces_by_size(size_val)
-      next unless available_spaces
+      next if available_spaces.empty?
 
       return available_spaces.min_by { |space| space.entrance_distances[entrance_number - 1] }
     end
