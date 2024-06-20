@@ -1,24 +1,36 @@
-# README
+# OO Parking Lot
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Welcome to ParkOur, your smart parking system.
+Simply enter your car's license plate number and size, and our app will automatically select the nearest available parking spot based on your vehicle's dimensions and the closest entrance.
 
-Things you may want to cover:
+Key Features:
 
-* Ruby version
+- Automated Spot Selection: Find the nearest spot effortlessly.
+- Size-Based Allocation: Ensures a perfect fit for your vehicle.
+- Entrance Optimization: Minimizes walking distance by choosing spots near the closest entrance.
 
-* System dependencies
+## Up and Running
+1. Clone this repo on your local machine
+```
+git clone git@github.com:raenier/park_our.git
+cd park_our
+```
 
-* Configuration
+2. Install dependencies
+```
+bundle install
+```
 
-* Database creation
+3. Set up database and sample data
+```
+rails db:create
+rails db:migrate
+rails db:seed
+```
 
-* Database initialization
+4. Run rails server
+```
+rails server
+```
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+5. Go to localhost:3000
