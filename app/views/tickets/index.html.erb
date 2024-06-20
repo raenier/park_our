@@ -1,0 +1,19 @@
+<div data-controller="park">
+  <h2>Select Entrance:</h2>
+  <div class="entrance_numbers">
+    <% @entrance_count.times do |entrance| %>
+      <div class="box" data-action="click->park#pass"><%= entrance + 1 %></div>
+    <% end %>
+  </div>
+
+  <hr>
+
+  <%= form_with url: tickets_path do |f| %>
+    <%= f.hidden_field :entrance_number, data: { 'park-target' => "entrance" } %>
+    <%= f.label :plate, "Plate Number" %>
+    <%= f.text_field :plate, required: true %>
+    <%= f.label :size, "Vehicle Size" %>
+    <%= f.select :size, @vehicle_sizes %>
+    <%= f.submit "PARK" %>
+  <% end %>
+</div>
