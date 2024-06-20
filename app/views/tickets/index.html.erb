@@ -14,6 +14,6 @@
     <%= f.text_field :plate, required: true %>
     <%= f.label :size, "Vehicle Size" %>
     <%= f.select :size, @vehicle_sizes %>
-    <%= f.submit "PARK" %>
+    <%= f.submit "PARK", class: "btn" %>
   <% end %>
 </div>

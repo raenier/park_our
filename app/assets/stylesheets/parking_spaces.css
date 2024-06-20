@@ -18,3 +18,18 @@
 .selected {
   background-color: darkgray;
 }
+
+.btn {
+  font-size: 1.2rem;
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: 0;
+  color: white;
+  background-color: green;
+}
+
+input, select, label {
+  border-radius: 5px;
+  font-size: 1.2rem;
+  padding: 5px 10px;
+}
